@@ -7,6 +7,7 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import BusinessListPage from './pages/BusinessListPage/BusinessListPage';
 import MyBookingsPage from './pages/MyBookingsPage/MyBookingsPage';
 import CreateBookingPage from './pages/CreateBookingPage/CreateBookingPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import { loginSuccess } from './redux/auth/authSlice';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
             <Route path="/businesses" element={<BusinessListPage />} />
             <Route path="/bookings" element={<MyBookingsPage />} />
             <Route path="/book/:id" element={<CreateBookingPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
           </Route>
       )}
       <Route path="*" element={<Navigate to={token ? "/businesses" : "/auth"} />} />

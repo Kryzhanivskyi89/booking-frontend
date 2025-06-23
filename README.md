@@ -1,78 +1,89 @@
 # 📅 Booking App — Full Stack SPA for Online Reservations
 
-A modern full-stack application that enables seamless appointment booking between clients and businesses. Built with React and Node.js, featuring comprehensive authentication, booking management, and role-based access control.
+A modern full-stack application that enables seamless appointment booking between clients and businesses. Built with **React**, **Redux Toolkit**, **Node.js**, and **MongoDB**, it features full authentication, role-based access, and booking management.
+
+---
 
 ## 🌟 Features
 
 ### 👥 User Management
 
-- **Two distinct user roles**: Client and Business
-- **JWT-based authentication** with secure token management
-- **User registration and login** with form validation
-- **Profile management** and account settings
+- Two distinct roles: **Client** and **Business**
+- **JWT-based authentication** with secure token storage
+- **User registration & login**
+- **Profile management** (update, delete own account)
 
 ### 📅 Booking System
 
-- **Create appointments** with date/time selection
-- **View all bookings** with status tracking
-- **Cancel reservations** with confirmation flow
-- **Real-time availability** checking
-- **Booking history** and management dashboard
+- **Clients** can:
+    - View list of business users
+    - Create, view, edit, and cancel their bookings
+- **Business users** are displayed in the system for clients to book
+- Automatic association of booking to logged-in client
 
-### 🔒 Security & Navigation
+### 🔒 Security & Access
 
-- **Protected routes** with React Router
-- **Role-based access control** for different user types
-- **Secure API endpoints** with authentication middleware
+- **Protected routes** with `React Router`
+- **Role-based access** (e.g., only clients can create bookings)
+- **Secure Express endpoints** with middleware auth checks
 
-### 🎨 User Experience
+### 🎨 UX & UI
 
-- **Responsive design** that works on all devices
-- **Intuitive interface** with modern UI components
-- **Real-time feedback** and loading states
-- **Error handling** with user-friendly messages
+- **Responsive layout** (mobile-friendly)
+- **Clean modern interface** using custom CSS modules
+- **Real-time feedback**, loading states, and error handling
+
+---
 
 ## 🚀 Tech Stack
 
-- **React** - UI library for building interactive interfaces
-- **Redux Toolkit** - State management with modern Redux patterns
-- **React Router DOM** - Client-side routing and navigation
-- **Axios** - HTTP client for API communication
+| Frontend | Backend |
+| --- | --- |
+| React, Redux Toolkit, React Router, Axios | Node.js, Express, MongoDB, JWT |
+
+---
 
 ## 🛠️ Getting Started
 
-### Prerequisites
+### 📦 Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v14+)
 - npm or yarn
 - MongoDB (local or Atlas)
 
-### Installation
+### 📁 Installation
 
- **Clone the repository**
+Clone the frontend and backend repos:
 
 ```bash
-git clone https://github.com/Kryzhanivskyi89/booking-frontend
+# Frontend
+git clone <https://github.com/Kryzhanivskyi89/booking-frontend>
 cd booking-frontend
+npm install
+npm start
+
+# Backend
+git clone <https://github.com/Kryzhanivskyi89/booking-backend>
+cd booking-backend
+npm install
+npm run dev
 ```
 
-## 📱 Usage
+## **📱 Usage Instructions**
 
-### For Clients
+### **✅ Client Flow**
 
-1. **Register/Login** to create an account
-2. **Browse available services** and time slots
-3. **Book appointments** with your preferred businesses
-4. **Manage your bookings** from the dashboard
-5. **Cancel or reschedule** appointments as needed
+1. Register or login as Client
+2. View list of business users
+3. Book appointment (select business & date)
+4. View your bookings
+5. Edit or cancel your bookings
 
-### For Businesses
+### **🧑‍💼 Business Flow**
 
-1. **Register as a business** user
-2. **Set up your services** and availability
-3. **Manage incoming bookings** and client requests
-4. **View booking analytics** and history
-5. **Update business information** and settings
+1. Register as Business
+2. Be discoverable for clients in the booking list
+3. Currently no dashboard (future improvement)
 
 ## 🌐 Deployment
 
@@ -98,6 +109,9 @@ cd booking-frontend
 | Method | Endpoint | Description |
 | --- | --- | --- |
 | GET | `/api/users` | Get all users with role "business" |
+| GET | /api/users/:id | Get user by ID |
+| PUT | /api/users/:id | Update user info |
+| DELETE | /api/users/:id | Delete user |
 
 ---
 
@@ -108,6 +122,20 @@ cd booking-frontend
 | GET | `/api/bookings` | Get bookings for user |
 | POST | `/api/bookings` | Create a booking |
 | DELETE | `/api/bookings/:id` | Cancel a booking by ID |
+| PUT | `/api/bookings/:id` | Update client’s own booking |
+
+---
+
+## **💡 Project Highlights**
+
+- Full CRUD for users and bookings
+- Role-based authorization
+- Separation of concerns (frontend/backend)
+- Reusable logic and error handling
+- Environment-based configuration
+- Deployed to production with free-tier platforms
+
+---
 
 ## 🤝 Contributing
 
@@ -136,4 +164,4 @@ This project is licensed under the <AndrewDev/>.
 
 ---
 
-**Built with ❤️ for seamless booking experiences**
+**Built with ❤️ by [Andrew Kryzhanivskyi](https://github.com/Kryzhanivskyi89)**

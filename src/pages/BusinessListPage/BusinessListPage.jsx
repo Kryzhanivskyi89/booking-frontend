@@ -9,12 +9,15 @@ export default function BusinessListPage() {
   const [businessUsers, setBusinessUsers] = useState([]);
   const [error, setError] = useState(null);
   const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        const res = await API.get('/users');
+        const res = await API.get('/users', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
         const businessOnly = res.data.filter((user) => user.role === 'business');
         setBusinessUsers(businessOnly);
       } catch (err) {
@@ -22,8 +25,14 @@ export default function BusinessListPage() {
       }
     };
 
-    fetchBusinesses();
-  }, []);
+    if (user?.role === 'client') {
+      fetchBusinesses();
+    }
+  }, [token, user]);
+
+  if (user?.role !== 'client') {
+    return <p className={styles.warning}>Доступ лише для клієнтів</p>;
+  }
 
   return (
     <div className='container'>
@@ -33,15 +42,15 @@ export default function BusinessListPage() {
         {businessUsers.map((user) => (
           <li className={styles.wrap} key={user._id}>
             <div className={styles.card}>
-                <div className={styles.cardContent}>
-                  <h3 className={styles.cardTitle}>{user.name}</h3>
-                  <p className={styles.cardDesc}>{user.email}</p>
-                  <button 
-                    className={styles.cardLink}  
-                    onClick={() => {navigate(`/book/${user._id}`);}}>
-                      Записатись
-                  </button>
-                </div>
+              <div className={styles.cardContent}>
+                <h3 className={styles.cardTitle}>{user.name}</h3>
+                <p className={styles.cardDesc}>{user.email}</p>
+                <button 
+                  className={styles.cardLink}  
+                  onClick={() => {navigate(`/book/${user._id}`);}}>
+                    Записатись
+                </button>
+              </div>
             </div>
           </li>
         ))}

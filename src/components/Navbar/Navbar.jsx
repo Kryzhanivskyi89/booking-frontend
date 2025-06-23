@@ -32,6 +32,15 @@ export default function Navbar() {
 
       <div className={styles.navLinks}>
         <NavLink 
+          to="/profile" 
+          className={({ isActive }) => 
+            `${styles.navLink} ${isActive ? styles.active : ''}`
+          }
+        >
+          Профіль
+        </NavLink>
+        
+        <NavLink 
           to="/businesses" 
           className={({ isActive }) => 
             `${styles.navLink} ${isActive ? styles.active : ''}`
