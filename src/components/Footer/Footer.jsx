@@ -1,4 +1,9 @@
 
+import linkedinIcon from '../../images/linkedin.png';
+import githubIcon from '../../images/github.png';
+import telegramIcon from '../../images/telegram.png';
+import gmailIcon from '../../images/gmail.png'
+import iphoneIcon from '../../images/iPhone.png'
 
 import styles from './style.module.css';
 
@@ -17,7 +22,7 @@ const Footer = () => {
             >
               <img 
                 className={styles.socialIcon} 
-                src="/images/linkedin.png" 
+                src={linkedinIcon}
                 alt="linkedin" 
                 width="25" 
                 height="28"
@@ -31,7 +36,7 @@ const Footer = () => {
             >
               <img 
                 className={styles.socialIcon} 
-                src="/images/github.png" 
+                src={githubIcon} 
                 alt="github" 
                 width="25" 
                 height="28" 
@@ -45,7 +50,7 @@ const Footer = () => {
             >
               <img 
                 className={styles.socialIcon} 
-                src="/images/telegram.png" 
+                src={telegramIcon}
                 alt="telegram" 
                 width="25" 
                 height="28" 
@@ -64,7 +69,7 @@ const Footer = () => {
           >
             <img 
               className={styles.footerMailIcon} 
-              src="/images/gmail.png" 
+              src={gmailIcon} 
               alt="gmail" 
               width="25" 
               height="28" 
@@ -79,7 +84,7 @@ const Footer = () => {
           >
             <img 
               className={styles.footerMailIcon} 
-              src="/images/iPhone.png" 
+              src={iphoneIcon} 
               alt="phone" 
               width="25" 
               height="28" 
